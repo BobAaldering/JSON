@@ -1,6 +1,6 @@
 #include <stdio.h>
 
-#include "json_serializer.h"
+#include <json_serializer.h>
 
 int main() {
     json_data_t data;

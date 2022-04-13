@@ -9,13 +9,12 @@ set(target JSON) # Create a name for your target.
 target_sources(${target}
         PRIVATE
         main.c # The main file of the project.
-
-        src/json_serializer.c
         )
 
-include_directories(./inc) # Instruct the compiler where to look for the given header files within this project.
+add_subdirectory(serializer) # Add this subdirectory.
+target_link_libraries(${target} PRIVATE json_serializer) # We are now using a library.
 
-target_compile_features(${target} PRIVATE c_std_23) # We are using the newest language standards, so C23.
+target_compile_features(${target} PRIVATE c_std_99) # We are using the newest language standards, so C23.
 set_target_properties(${target} PROPERTIES C_EXTENSIONS OFF) # Turn of compiler specific language extensions.
 
 # Set the options for GNU-linke compilers:
