@@ -59,3 +59,16 @@ if (HAS_ASAN AND USE_ASAN)
     target_compile_options(${target} PRIVATE -fsanitize=address) # Set the target compile options for the sanitizer.
     target_link_options(${target} PRIVATE -fsanitize=address) # The link options for the sanitizer.
 endif ()
+
+include(FetchContent) # Include the 'FetchContent' facilities.
+
+# Download the Google Test framework from GitHub.
+FetchContent_Declare(
+        googletest
+        GIT_REPOSITORY https://github.com/google/googletest.git
+        GIT_TAG release-1.11.0
+        )
+
+FetchContent_MakeAvailable(googletest) # Make the Google Test framework available.
+
+add_subdirectory(tests) # Add the test subdirectory to the target.
